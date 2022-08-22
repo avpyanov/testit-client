@@ -1,9 +1,6 @@
 package com.github.avpyanov.testit.client;
 
-import com.github.avpyanov.testit.client.api.Attachments;
-import com.github.avpyanov.testit.client.api.Autotests;
-import com.github.avpyanov.testit.client.api.TestRuns;
-import com.github.avpyanov.testit.client.api.WorkItems;
+import com.github.avpyanov.testit.client.api.*;
 import feign.Feign;
 import feign.Retryer;
 import feign.form.FormEncoder;
@@ -18,6 +15,7 @@ public class TestItApi {
     private final Attachments attachments;
     private final TestRuns testRuns;
     private final WorkItems workItems;
+    private final Projects projects;
 
     public TestItApi(String endpoint, String token) {
         final OkHttpClient client = new OkHttpClient(new okhttp3.OkHttpClient.Builder()
@@ -32,6 +30,7 @@ public class TestItApi {
         attachments = feinBuilder.target(Attachments.class, endpoint);
         testRuns = feinBuilder.target(TestRuns.class, endpoint);
         workItems = feinBuilder.target(WorkItems.class, endpoint);
+        projects = feinBuilder.target(Projects.class, endpoint);
     }
 
     public TestItApi(String endpoint, Interceptor interceptor) {
@@ -47,6 +46,7 @@ public class TestItApi {
         attachments = feinBuilder.target(Attachments.class, endpoint);
         testRuns = feinBuilder.target(TestRuns.class, endpoint);
         workItems = feinBuilder.target(WorkItems.class, endpoint);
+        projects = feinBuilder.target(Projects.class, endpoint);
     }
 
     public Autotests getAutotestsClient() {
@@ -63,5 +63,9 @@ public class TestItApi {
 
     public WorkItems getWorkItemsClient() {
         return workItems;
+    }
+
+    public Projects getProjectsClient() {
+        return projects;
     }
 }
