@@ -1,6 +1,6 @@
 package com.github.avpyanov.testit.client.dto;
 
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Data
+@Setter
+@Getter
 @Accessors(fluent = true)
+@ToString
 public class AutotestResults {
 
     private String configurationId;
