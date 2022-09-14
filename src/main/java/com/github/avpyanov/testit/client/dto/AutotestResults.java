@@ -1,6 +1,7 @@
 package com.github.avpyanov.testit.client.dto;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
+@Accessors(fluent = true)
 public class AutotestResults {
 
     private String configurationId;
@@ -17,10 +19,10 @@ public class AutotestResults {
     private String traces;
     private String startedOn;
     private String completedOn;
-    private Integer duration;
+    private Long duration;
     private List<Attachment> attachments;
     private Map<String, String> parameters;
-    private Map<String, String>  properties;
+    private Map<String, String> properties;
     private List<AutotestResultsStep> stepResults;
     private List<AutotestResultsStep> setupResults;
     private List<AutotestResultsStep> teardownResults;
