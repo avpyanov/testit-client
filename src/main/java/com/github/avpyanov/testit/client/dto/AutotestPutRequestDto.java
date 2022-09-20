@@ -3,6 +3,7 @@ package com.github.avpyanov.testit.client.dto;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 public class AutotestPutRequestDto {
@@ -20,6 +21,6 @@ public class AutotestPutRequestDto {
     private List<AutotestStep> setup;
     private List<AutotestStep> teardown;
     private List<Link> links;
-    private List<String> workItemIdsForLinkWithAutoTest;
+    private List<UUID> workItemIdsForLinkWithAutoTest;
     private boolean isFlaky;
 }
