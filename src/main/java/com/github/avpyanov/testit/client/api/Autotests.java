@@ -27,6 +27,7 @@ public interface Autotests {
     List<ItemId> getLinkedWorkItems(@Param("autotestId") String autotestId,
                                     @Param("isWorkItemDeleted") boolean isWorkItemDeleted);
 
+    @Headers("Content-Type: application/json")
     @RequestLine("POST /api/v2/autoTests/{autotestId}/workItems")
     void linkAutotestAndWorkItem(@Param("autotestId") String autotestId, IdDto id);
 
