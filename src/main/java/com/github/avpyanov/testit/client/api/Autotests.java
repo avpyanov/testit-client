@@ -1,9 +1,6 @@
 package com.github.avpyanov.testit.client.api;
 
-import com.github.avpyanov.testit.client.dto.AutotestDto;
-import com.github.avpyanov.testit.client.dto.AutotestPostRequestDto;
-import com.github.avpyanov.testit.client.dto.AutotestPutRequestDto;
-import com.github.avpyanov.testit.client.dto.ItemId;
+import com.github.avpyanov.testit.client.dto.*;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -29,5 +26,8 @@ public interface Autotests {
     @RequestLine("GET /api/v2/autoTests/{autotestId}/workItems?isWorkItemDeleted={isWorkItemDeleted}")
     List<ItemId> getLinkedWorkItems(@Param("autotestId") String autotestId,
                                     @Param("isWorkItemDeleted") boolean isWorkItemDeleted);
+
+    @RequestLine("POST /api/v2/autoTests/{autotestId}/workItems")
+    void linkAutotestAndWorkItem(@Param("autotestId") String autotestId, IdDto id);
 
 }
