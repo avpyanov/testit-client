@@ -10,6 +10,6 @@ import java.io.File;
 public interface Attachments {
 
     @Headers("Content-Type: multipart/form-data")
-    @RequestLine("POST /api/v2/attachments?apiVersion=2")
+    @RequestLine("POST /api/v2/attachments")
     Attachment createAttachment(@Param(value = "file") File attachment);
 }

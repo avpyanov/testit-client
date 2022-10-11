@@ -16,64 +16,43 @@ import javax.net.ssl.X509TrustManager;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
-public class TestItApi {
+public class TestItApiClient {
 
-    private final Autotests autotests;
-    private final Attachments attachments;
-    private final TestRuns testRuns;
-    private final WorkItems workItems;
-    private final Projects projects;
+    private final Feign.Builder feinBuilder;
+    private final String endpoint;
 
-    public TestItApi(String endpoint, String token) {
-        final OkHttpClient httpClient = getHttpClient(new TestItRequestsInterceptor(token));
-
-        Feign.Builder feinBuilder = Feign.builder()
-                .client(httpClient)
+    public TestItApiClient(String endpoint, String token) {
+        final OkHttpClient client = getHttpClient(new TestItRequestsInterceptor(token));
+        this.endpoint = endpoint;
+        feinBuilder = Feign.builder()
+                .client(client)
                 .encoder(new FormEncoder(new GsonEncoder()))
                 .decoder(new GsonDecoder())
                 .retryer(Retryer.NEVER_RETRY);
-
-        autotests = feinBuilder.target(Autotests.class, endpoint);
-        attachments = feinBuilder.target(Attachments.class, endpoint);
-        testRuns = feinBuilder.target(TestRuns.class, endpoint);
-        workItems = feinBuilder.target(WorkItems.class, endpoint);
-        projects = feinBuilder.target(Projects.class, endpoint);
     }
 
-    public TestItApi(String endpoint, Interceptor interceptor) {
-        final OkHttpClient httpClient = getHttpClient(interceptor);
-
-        Feign.Builder feinBuilder = Feign.builder()
-                .client(httpClient)
-                .encoder(new FormEncoder(new GsonEncoder()))
-                .decoder(new GsonDecoder())
-                .retryer(Retryer.NEVER_RETRY);
-
-        autotests = feinBuilder.target(Autotests.class, endpoint);
-        attachments = feinBuilder.target(Attachments.class, endpoint);
-        testRuns = feinBuilder.target(TestRuns.class, endpoint);
-        workItems = feinBuilder.target(WorkItems.class, endpoint);
-        projects = feinBuilder.target(Projects.class, endpoint);
+    public Attachments attachmentsApi() {
+        return feinBuilder.target(Attachments.class, endpoint);
     }
 
-    public Autotests getAutotestsClient() {
-        return autotests;
+    public Autotests autotestsApi() {
+        return feinBuilder.target(Autotests.class, endpoint);
     }
 
-    public Attachments getAttachmentsClient() {
-        return attachments;
+    public Projects projectsApi() {
+        return feinBuilder.target(Projects.class, endpoint);
     }
 
-    public TestRuns getTestRunsClient() {
-        return testRuns;
+    public Sections sectionsApi() {
+        return feinBuilder.target(Sections.class, endpoint);
     }
 
-    public WorkItems getWorkItemsClient() {
-        return workItems;
+    public TestRuns testRunsApi() {
+        return feinBuilder.target(TestRuns.class, endpoint);
     }
 
-    public Projects getProjectsClient() {
-        return projects;
+    public WorkItems workItemsApi() {
+        return feinBuilder.target(WorkItems.class, endpoint);
     }
 
     private OkHttpClient getHttpClient(Interceptor interceptor) {

@@ -8,4 +8,8 @@ import java.util.UUID;
 public class IdDto {
 
     private UUID id;
+
+    public IdDto(UUID id) {
+        this.id = id;
+    }
 }

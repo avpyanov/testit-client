@@ -5,14 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 public class Section {
 
-    private String id;
+    private UUID id;
     private String name;
-    private String projectId;
-    private String parentId;
+    private UUID projectId;
+    private UUID parentId;
 }

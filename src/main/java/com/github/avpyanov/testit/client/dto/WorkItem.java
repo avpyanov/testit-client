@@ -29,6 +29,4 @@ public class WorkItem {
     private List<Link> links;
     private Long duration;
     private List<AutotestDto> autoTests;
-
-
 }
