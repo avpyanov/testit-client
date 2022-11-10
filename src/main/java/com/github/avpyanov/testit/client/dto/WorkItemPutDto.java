@@ -11,6 +11,7 @@ public class WorkItemPutDto {
 
     private UUID id;
     private UUID sectionId;
+    private String name;
     private List<IdDto> attachments;
     private List<IdDto> autoTests;
     private String description;
