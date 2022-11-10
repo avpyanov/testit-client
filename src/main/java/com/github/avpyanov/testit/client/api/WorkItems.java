@@ -2,6 +2,7 @@ package com.github.avpyanov.testit.client.api;
 
 import com.github.avpyanov.testit.client.dto.AutotestDto;
 import com.github.avpyanov.testit.client.dto.WorkItem;
+import com.github.avpyanov.testit.client.dto.WorkItemPutDto;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -25,5 +26,5 @@ public interface WorkItems {
 
     @Headers("Content-Type: application/json")
     @RequestLine("PUT /api/v2/workItems")
-    WorkItem updateWorkItem(WorkItem workItem);
+    void updateWorkItem(WorkItemPutDto workItem);
 }
