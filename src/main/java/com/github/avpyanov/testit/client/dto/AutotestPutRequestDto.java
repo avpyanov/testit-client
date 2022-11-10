@@ -8,7 +8,7 @@ import java.util.UUID;
 @Data
 public class AutotestPutRequestDto {
 
-    private String id;
+    private UUID id;
     private String externalId;
     private String globalId;
     private String projectId;
