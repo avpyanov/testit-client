@@ -55,6 +55,10 @@ public class TestItApiClient {
         return feinBuilder.target(WorkItems.class, endpoint);
     }
 
+    public TestPlans testPlansApi() {
+        return feinBuilder.target(TestPlans.class, endpoint);
+    }
+
     private OkHttpClient getHttpClient(Interceptor interceptor) {
         TrustManager[] trustAllCerts = new TrustManager[]{
                 new X509TrustManager() {
