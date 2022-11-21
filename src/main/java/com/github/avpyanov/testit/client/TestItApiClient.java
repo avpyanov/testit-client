@@ -55,6 +55,10 @@ public class TestItApiClient {
         return feinBuilder.target(WorkItems.class, endpoint);
     }
 
+    public TestSuites testSuites() {
+        return feinBuilder.target(TestSuites.class, endpoint);
+    }
+
     public TestPlans testPlansApi() {
         return feinBuilder.target(TestPlans.class, endpoint);
     }
