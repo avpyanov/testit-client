@@ -9,6 +9,7 @@ import java.util.Map;
 public class TestResult {
 
     private Configuration configuration;
+    private List<String> failureReasonNames;
     private AutotestDto autoTest;
     private String id;
     private String configurationId;

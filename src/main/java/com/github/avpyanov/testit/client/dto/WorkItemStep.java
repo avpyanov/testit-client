@@ -1,6 +1,5 @@
 package com.github.avpyanov.testit.client.dto;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,4 +19,5 @@ public class WorkItemStep {
     private String testData;
     private String comments;
     private String workItemId;
+    private SharedStep workItem;
 }
